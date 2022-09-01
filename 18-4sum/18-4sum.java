@@ -1,38 +1,38 @@
 class Solution {
 
-    public List<List<Integer>> fourSum(int[] nums, int target) {
-        ArrayList<List<Integer>> res = new ArrayList<>();
-        if (nums == null || nums.length == 0) {
-            return res;
-        }
-        int n = nums.length;
+      public static List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        if(nums.length < 4) return list;
         Arrays.sort(nums);
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-               
-                int front = j + 1;
-                int back = n - 1;
-                while (front < back) {
-                    long two_sum = nums[front];
-                    two_sum+=nums[back];
-                      two_sum+=nums[i];
-                      two_sum+=nums[j];
-                    if (two_sum < target) front++; else if (two_sum > target) back--; else {
-                        List<Integer> quad = new ArrayList<>();
-                        quad.add(nums[i]);
-                        quad.add(nums[j]);
-                        quad.add(nums[front]);
-                        quad.add(nums[back]);
-                        res.add(quad);
+        for(int k=0;k<nums.length-3;k++){
+            if(k>0 && nums[k-1] == nums[k]) continue;
+            for(int i =k+1;i<nums.length-2;i++){
+                if(i>k+1 && nums[i-1] == nums[i]) continue;
+                int start = i+1;
+                int end = nums.length-1;
+                while(start<end){
 
-                        while (front < back && nums[front] == quad.get(2)) ++front;
-                        while (front < back && nums[back] == quad.get(3)) --back;
-                    }
+                    long sum = nums[start];
+                    boolean isInf = false;
+                    sum += nums[end];
+                    if (sum > Integer.MAX_VALUE) isInf = true;
+                    sum += nums[k];
+                    if (sum > Integer.MAX_VALUE) isInf = true;
+                    sum += nums[i];
+                    if (sum > Integer.MAX_VALUE)  isInf = true;
+                    if(!isInf && sum == target){
+                        list.add(Arrays.asList(nums[k],nums[i],nums[start],nums[end]));
+                        while(start<end && nums[start+1] == nums[start]) start++;
+                        while(start<end && nums[end-1] == nums[end]) end--;
+
+                        start++;
+                        end--;
+                    }else if(sum > target) end--;
+                    else start++;
                 }
-                while (j + 1 < n && nums[j + 1] == nums[j]) ++j;
             }
-            while (i + 1 < n && nums[i + 1] == nums[i]) ++i;
         }
-        return res;
+        return list;
+
     }
 }
