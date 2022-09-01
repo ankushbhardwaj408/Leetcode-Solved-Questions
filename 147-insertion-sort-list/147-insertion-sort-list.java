@@ -14,22 +14,21 @@ class Solution {
         ListNode temp = head;
         ListNode next = temp.next;
 
-        while (temp!= null) {
+        while (temp != null) {
             ListNode start = head;
             ListNode end = head;
             while (start != temp) {
                 if (start.val > temp.val) {
-                    temp.next=start;
-                    if(start==head){
-                        head=temp;
-                    }else{
-                        end.next=temp;
-                    } 
-                    while(start.next!=temp)
-                    {
-                        start=start.next;
+                    temp.next = start;
+                    if (start == head) {
+                        head = temp;
+                    } else {
+                        end.next = temp;
                     }
-                    start.next=next;
+                    while (start.next != temp) {
+                        start = start.next;
+                    }
+                    start.next = next;
                     break;
                 } else {
                     end = start;
@@ -38,11 +37,9 @@ class Solution {
             }
 
             temp = next;
-            if(next!=null)
-            {
-                 next = next.next;
+            if (next != null) {
+                next = next.next;
             }
-           
         }
         return head;
     }
