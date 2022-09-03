@@ -12,7 +12,7 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         ListNode mid=middle(head);
         ListNode headsecond=reverse(mid);
-     
+      //  ListNode temp=headsecond;
         while(head!=null && headsecond!=null)
         {
             if(head.val!=headsecond.val)
@@ -22,7 +22,8 @@ class Solution {
             head=head.next;
            headsecond=headsecond.next;
         }
-     
+      //  reverse(temp);
+      //  return head==null || headsecond==null;
         return true;
     }
     public ListNode reverse(ListNode head)
