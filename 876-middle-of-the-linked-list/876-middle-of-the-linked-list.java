@@ -17,7 +17,10 @@ class Solution {
         {
             s=s.next;
             f=f.next.next;
-           
+            // if(f.next==null)
+            // {
+            //     s=s.next;
+            // }
         }
         return s;
     }
