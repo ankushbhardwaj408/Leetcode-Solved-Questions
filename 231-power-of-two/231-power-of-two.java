@@ -10,7 +10,7 @@ class Solution {
         // if(c==2) return true;
         // return false;
         
-     return (n&(n-1))==0;
+     return n>0&&(n&(n-1))==0;
       
     }
 }
