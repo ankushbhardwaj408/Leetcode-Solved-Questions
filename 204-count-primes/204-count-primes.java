@@ -3,10 +3,8 @@ class Solution {
     public int countPrimes(int n) {
         if (n == 0) return 0;
         if (n == 1) return 0;
-
         boolean[] ans = new boolean[n + 1];
         int x = prime(n, ans);
-
         return x;
     }
 
