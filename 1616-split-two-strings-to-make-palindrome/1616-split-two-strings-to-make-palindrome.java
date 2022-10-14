@@ -1,29 +1,27 @@
 class Solution {
     public boolean checkPalindromeFormation(String a, String b) {
-        return (check(a,b) || check(b,a));
+        return (split(a,b) || split(b,a));
     }
-    public boolean check(String a,String b)
+    public boolean split(String a,String b)
     {
         int i=0;
-        int j=b.length()-1;
-        while(i<j && a.charAt(i)==b.charAt(j))
+        int j=a.length()-1;
+        while(  i<=j && a.charAt(i)==b.charAt(j))
         {
             i++;
             j--;
             
         }
-        if(i>=j) return true;
-        return (Palin(a.substring(i,j+1)) || Palin(b.substring(i,j+1)));
+    return (palin(a,i,j) || palin(b,i,j));
+        
     }
-    public boolean Palin(String s)
+    public boolean palin(String s,int a,int b)
     {
-          int i=0;
-        int j=s.length()-1;
-        while(i<=j)
+        while(a<=b)
         {
-            if(s.charAt(i)!=s.charAt(j)) return false;
-            i++;
-            j--;
+            if(s.charAt(a)!=s.charAt(b)) return false;
+            a++;
+            b--;
         }
         return true;
     }
