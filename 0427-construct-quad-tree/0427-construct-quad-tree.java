@@ -60,7 +60,18 @@ class Solution {
             return node;
            
         }
-      
+        if((re-rs)==2 && (ce-cs)==2){
+            boolean a=(grid[rs][cs]==1);
+             boolean b=(grid[rs][ce-1]==1);
+             boolean c=(grid[re-1][cs]==1);
+             boolean d=(grid[re-1][ce-1]==1);
+            Node node1=new Node(a,true);
+             Node node2=new Node(b,true);
+             Node node3=new Node(c,true);
+             Node node4=new Node(d,true);
+           Node root=new Node(true,false,node1,node2,node3,node4);
+            return root;
+        }
         
         Node topleft=fun(grid,rs,cs,rs+(re-rs)/2,cs+(ce-cs)/2);
          Node topright=fun(grid,rs,cs+(ce-cs)/2,rs+(re-rs)/2,ce);
