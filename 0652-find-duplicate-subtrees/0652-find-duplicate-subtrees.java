@@ -25,20 +25,16 @@ String s=post(root);
     {
         if(node==null)return NT;
         StringBuilder sb=new StringBuilder();
-        String left=NT;
-        String right=NT;
+       
         
-        if(node.left!=null)
-        {
-            left=post(node.left);
+       
+           String left=post(node.left);
             
-        }
+        
           
-        if(node.right!=null)
-        {
-            right=post(node.right);
+       String right=post(node.right);
             
-        }
+        
         sb.append(node.val);
         sb.append(",");
         sb.append(left);
