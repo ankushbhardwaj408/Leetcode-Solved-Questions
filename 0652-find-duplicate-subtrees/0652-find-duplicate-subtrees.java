@@ -23,7 +23,7 @@ String s=post(root);
     }
     public String post(TreeNode node)
     {
-        if(node==null)return NT;
+        // if(node==null)return NT;
         StringBuilder sb=new StringBuilder();
         String left=NT;
         String right=NT;
