@@ -1,28 +1,16 @@
 class Solution {
     public int findKthPositive(int[] arr, int k) {
-        int s=0;
-        int e=arr.length-1;
-        int ans=-1;
-        int mid=0;
-        while(s<=e)
+        ArrayList<Integer> list=new ArrayList<>();
+        for(int x:arr)
         {
-             mid=s+(e-s)/2;
-            
-             if(arr[mid]-(mid+1)<k){
-                s=mid+1;
-                
-            }else if(arr[mid]-(mid+1)>=k){
-                e=mid-1;
-            }
-                
+            list.add(x);
         }
-        if(e==-1)
+        int j=0;
+        while(k!=0)
         {
-            return k;
-        }else{
-            ans=arr[e]+(k-(arr[e]-(e+1)));
+            if(!list.contains(j+1))k--;
+            j++;
         }
-        
-       return ans;
+        return j;
     }
 }
