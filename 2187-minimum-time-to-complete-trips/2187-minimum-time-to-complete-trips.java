@@ -1,26 +1,30 @@
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
-        long i=0;
-        long j=100000000000000l;
-        long ans=j;
-        while(i<j)
-        {
-            long mid=(i+j)/2;
-            long cur=0;
-            
-            for(int k=0;k<time.length;k++)
-            {
-                cur=cur+(mid/time[k]);
-            }
-            if(cur>=totalTrips)
-            {
-                ans=Math.min(ans,mid);
-                j=mid;
-            }else{
-                i=mid+1;
-            }
-            
+       long low=Long.MAX_VALUE;
+        long high=0;
+        long min=Long.MAX_VALUE;
+        for(int it:time){
+            low=Math.min(low,it);
+            min=Math.min(min,it);
         }
-        return ans;
+        high=totalTrips*min;
+        while(low<high){
+            long mid=low+(high-low)/2;
+            if(blackbox(mid,totalTrips,time)){
+                high=mid;
+            }
+            else
+                low=mid+1;
+        }
+        return low;
+    }
+     public boolean blackbox(long isvalidtime,int totalTrips,int[] time){
+        long trips=0;
+        for(int it:time){
+            trips+=isvalidtime/it;
+        }
+        if(trips>=totalTrips)
+            return true;
+        return false;
     }
 }
