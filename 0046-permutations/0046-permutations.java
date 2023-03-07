@@ -52,7 +52,7 @@ class Solution {
             List<Integer> list = new ArrayList<>();
             for (int j = 0; j < s.length(); j++) {
                 char c = s.charAt(j);
-                String l = Character.toString(c);
+                String l = String.valueOf(c);
                 int x = 0;
                 switch (l) {
                     case "A":
