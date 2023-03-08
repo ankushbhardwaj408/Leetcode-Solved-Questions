@@ -2,7 +2,7 @@ class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         Arrays.sort(piles);
         int l=1;
-        int r=1_000_000_000;
+        int r=piles[piles.length-1];
        
         while(l<=r)
         {
