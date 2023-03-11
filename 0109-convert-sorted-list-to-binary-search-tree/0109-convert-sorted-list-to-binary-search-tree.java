@@ -40,11 +40,11 @@ class Solution {
         slow.next=null;
         TreeNode left=sortedListToBST(node);
           ans.left=left;
-        if(newhead.next!=null)
-        {
+        // if(newhead.next!=null)
+        // {
              TreeNode right=sortedListToBST(newhead.next);
              ans.right=right;
-        }
+        // }
       return ans;
        
         
