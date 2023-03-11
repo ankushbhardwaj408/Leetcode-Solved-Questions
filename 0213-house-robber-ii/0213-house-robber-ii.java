@@ -13,7 +13,7 @@ class Solution {
             arr2[i]=nums[i+1];
         }
         int x=Math.max(rob2(arr1),rob2(arr2));
-        return Math.max(nums[0],x);
+        return x;
     }
      public int rob2(int[] nums) {
         if(nums.length==0) return 0;
