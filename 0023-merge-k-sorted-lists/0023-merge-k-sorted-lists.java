@@ -12,7 +12,7 @@ class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length==0)return null;
         if(lists.length==1)return lists[0];
-        ListNode ans=sort(lists,0,lists.length);
+        ListNode ans=sort(lists,0,lists.length-1);
         return ans;
        
        
@@ -21,12 +21,12 @@ class Solution {
     }
     public ListNode sort(ListNode[] lists,int s,int e)
     {
-        if(e-s==1)return lists[s]; 
+        if(e-s==0)return lists[s]; 
        
        
             int mid=s+(e-s)/2;
             ListNode left=sort(lists,s,mid);
-            ListNode right=sort(lists,mid,e);
+            ListNode right=sort(lists,mid+1,e);
       ListNode ans= merge(left,right);
            
             
