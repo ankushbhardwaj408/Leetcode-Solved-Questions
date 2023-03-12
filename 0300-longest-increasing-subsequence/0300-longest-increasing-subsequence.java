@@ -1,15 +1,19 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-       List<Integer> piles = new ArrayList<>(nums.length);
-    for (int num : nums) {
-        int pile = Collections.binarySearch(piles, num);
-        if (pile < 0) pile = ~pile;
-        if (pile == piles.size()) {
-            piles.add(num);
-        } else {
-            piles.set(pile, num);
+         int[] tails = new int[nums.length];
+    int size = 0;
+    for (int x : nums) {
+        int i = 0, j = size;
+        while (i != j) {
+            int m = (i + j) / 2;
+            if (tails[m] < x)
+                i = m + 1;
+            else
+                j = m;
         }
+        tails[i] = x;
+        if (i == size) ++size;
     }
-    return piles.size();
+    return size;
     }
 }
