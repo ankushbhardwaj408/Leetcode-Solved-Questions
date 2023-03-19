@@ -10,7 +10,6 @@ class WordDictionary {
             if (curnode.child[cur - 'a'] == null) {
                 T newnode = new T();
                 curnode.child[cur - 'a'] = newnode;
-                
             }
             curnode = curnode.child[cur - 'a'];
         }
@@ -18,67 +17,59 @@ class WordDictionary {
     }
 
     public boolean search(String word) {
-      
-        return searching(word, root, 0);
+        return s(word, root, 0);
     }
 
 //     public boolean s(String word, T root, int index) {
-//         if(root==null)return false;
-      
+//         if (root == null) return false;
+
 //         T curnode = root;
 //         for (int i = index; i < word.length(); i++) {
 //             char cur = word.charAt(i);
 //             if (cur == '.') {
-             
 //                 for (int j = 0; j < curnode.child.length; j++) {
-                   
-                     
-//                         if (s(word, curnode.child[j], index + 1)) {
-//                             return true;
-//                         }
-                       
-                    
-                
+//                     if (s(word, curnode.child[j], index + 1)) {
+//                         return true;
+//                     }
 //                 }
 //                 return false;
-//             } else {
-//                 if (curnode.child[cur - 'a'] == null) return false;
-//                 curnode = curnode.child[cur - 'a'];
 //             }
+//             if (curnode.child[cur - 'a'] == null) return false;
+//             curnode = curnode.child[cur - 'a'];
 //         }
 
 //         return curnode.isLast;
 //     }
-    public boolean searching(String word, T node, int wordIdx) {
-    if (node == null) return false;
-    /**
-     * Time Complexity: O(n)
-     *   - word length
-     */
-    for (int i = wordIdx; i < word.length(); i++) {
-      int idx = word.charAt(i) - 'a';
-      // ('.' - 'a') = -51
-      if (idx == (-51)) {
-        /**
-         * Time Complexity: O(1)
-         *   - Always 26 lower-case English letters
-         */
-        for (int j = 0; j < node.child.length; j++) {
+      public boolean s(String word, T node, int wordIdx) {
+      if (node == null) return false;
+      /**
+       * Time Complexity: O(n)
+       *   - word length
+       */
+      for (int i = wordIdx; i < word.length(); i++) {
+        int idx = word.charAt(i) - 'a';
+        // ('.' - 'a') = -51
+        if (idx == (-51)) {
           /**
-           * Space Complexity: O(n)
-           *   - stack: if search '.' for whole letters.
+           * Time Complexity: O(1)
+           *   - Always 26 lower-case English letters
            */
-          if (searching(word, node.child[j], i + 1)) {
-            return true;
+          for (int j = 0; j < node.child.length; j++) {
+            /**
+             * Space Complexity: O(n)
+             *   - stack: if search '.' for whole letters.
+             */
+            if (s(word, node.child[j], i + 1)) {
+              return true;
+            }
           }
+          return false;
         }
-        return false;
+        if (node.child[idx] == null) return false;
+        node = node.child[idx];
       }
-      if (node.child[idx] == null) return false;
-      node = node.child[idx];
+      return node.isLast;
     }
-    return node.isLast;
-  }
 }
 
 class T {
@@ -88,7 +79,6 @@ class T {
     public T() {
         child = new T[26];
         isLast = false;
-      
     }
 }
 /**
