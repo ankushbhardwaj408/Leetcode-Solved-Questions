@@ -28,8 +28,12 @@ class WordDictionary {
                 char cur = word.charAt(i);
                 if (cur == '.') {
                     for (int j = 0; j < curnode.child.length; j++) {
+                        if(curnode.child[j]!=null){
+                            
+                        
                         if (s(word, curnode.child[j], i + 1)) {
                             return true;
+                        }
                         }
                     }
                     return false;
