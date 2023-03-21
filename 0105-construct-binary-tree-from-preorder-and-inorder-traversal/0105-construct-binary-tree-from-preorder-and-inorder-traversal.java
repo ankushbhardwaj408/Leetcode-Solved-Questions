@@ -24,7 +24,7 @@ class Solution {
         int y=preorder[start];
         TreeNode root=new TreeNode(y);
         int i=start1;
-        for( i=start1;i<end1;i++)
+        for( i=start1;i<=end1;i++)
         {
             if(inorder[i]==root.val)break;
         }
