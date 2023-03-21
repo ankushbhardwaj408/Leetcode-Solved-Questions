@@ -19,7 +19,7 @@ class Solution {
      return formBinaryTree(inorder,postorder,0,inorder.length-1,0,inorder.length-1);
     }
       public TreeNode formBinaryTree(int[] inOrder, int [] postOrder, int start, int end , int start2, int end2)      {
-        if(start > end){
+        if(start2 > end2){
             
             return  null;
         }
