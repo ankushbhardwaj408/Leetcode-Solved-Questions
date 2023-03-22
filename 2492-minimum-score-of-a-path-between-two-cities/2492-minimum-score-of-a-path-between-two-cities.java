@@ -1,31 +1,37 @@
 class Solution {
-    class Pair{
+
+    class Pair {
         int node;
-        int dist;
-       public Pair(int node,int dist){
-            this.node=node;
-            this.dist=dist;
+        int dis;
+
+        public Pair(int node, int dis) {
+            this.node = node;
+            this.dis = dis;
         }
     }
+
     public int minScore(int n, int[][] roads) {
-        List<List<Pair>> adj=new ArrayList<>();
-        for(int i=0;i<n+1;i++)
-            adj.add(new ArrayList<>());
-        for(int i=0;i<roads.length;i++){
-            adj.get(roads[i][0]).add(new Pair(roads[i][1],roads[i][2]));
-            adj.get(roads[i][1]).add(new Pair(roads[i][0],roads[i][2]));
+        List<List<Pair>> lis = new ArrayList<>();
+        for (int i = 0; i < n + 1; i++) {
+            List<Pair> p = new ArrayList<>();
+            lis.add(p);
         }
-        Queue<Pair> qu=new LinkedList<>();
-        boolean vis[]=new boolean[n+1];
-        qu.add(new Pair(1,Integer.MAX_VALUE));
-        int ans=Integer.MAX_VALUE;
-        while(!qu.isEmpty()){
-            Pair p=qu.poll();
-            vis[p.node]=true;
-            ans=Math.min(ans,p.dist);
-            for(Pair adjcomp:adj.get(p.node)){
-                if(!vis[adjcomp.node]){
-                    qu.add(adjcomp);
+        for (int j = 0; j < roads.length; j++) {
+            lis.get(roads[j][0]).add(new Pair(roads[j][1], roads[j][2]));
+            lis.get(roads[j][1]).add(new Pair(roads[j][0], roads[j][2]));
+        }
+        Queue<Pair> q = new LinkedList<>();
+        int ans = Integer.MAX_VALUE;
+        q.add(new Pair(1, Integer.MAX_VALUE));
+        boolean[] vis = new boolean[n + 1];
+        while (!q.isEmpty()) {
+            Pair no = q.poll();
+
+            vis[no.node] = true;
+            ans = Math.min(ans, no.dis);
+            for (Pair qw : lis.get(no.node)) {
+                if (!vis[qw.node]) {
+                    q.add(qw);
                 }
             }
         }
