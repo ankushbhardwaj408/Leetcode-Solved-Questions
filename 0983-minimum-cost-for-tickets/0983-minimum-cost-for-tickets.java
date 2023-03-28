@@ -15,15 +15,19 @@ class Solution {
             int ondDayPass = helper(days, costs, day + 1) + costs[0];
 
             int i;
-            for(i = day; i < days.length; i++)
+            for(i = day; i < days.length; i++){
                 if(days[i] >= days[day] + 7)
                     break;
+            }
+                
 
             int sevenDayPass = helper(days, costs, i) + costs[1];
 
-            for(i = day; i < days.length; i++)
-                if(days[i] >= days[day] + 30)
+            for(i = day; i < days.length; i++){
+                 if(days[i] >= days[day] + 30)
                     break;
+            }
+               
 
             int thirtyDayPass = helper(days, costs, i) + costs[2];
 
