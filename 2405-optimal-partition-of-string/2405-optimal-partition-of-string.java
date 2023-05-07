@@ -1,6 +1,7 @@
 class Solution {
+    static int ans=Integer.MAX_VALUE;
     public int partitionString(String s) {
-         int count=(s.isEmpty())? 0:1;
+      int count=(s.isEmpty())? 0:1;
         
         s=s.toLowerCase();
         HashSet<Character> letter =new HashSet<Character>();
@@ -13,4 +14,5 @@ class Solution {
         }
         return count;
     }
-}
+  
+    }
